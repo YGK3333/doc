@@ -1,0 +1,45 @@
+Cy.get().click()
+
+cy.get().type()
+
+Dealing with identifying the components and perform an actions 
+
+identifying  get /contians 
+
+actions  => click/type  etc...
+
+How to we test them  with our expectations 
+
+like if you click on utlities page  , how do you confirm that cypress opened utilities page only . 
+Assetions we can confirm whether we are getting the right output or not?
+
+Assertion means  we have should('have.text', 'cypress api')
+
+
+should('have.class', 'success')
+// checking the text of the  element in various ways
+  .should('have.text', 'Column content')
+  .should('contain', 'Column content')
+  .should('have.html', 'Column content')
+  // chai-jquery uses "is()" to check if element matches selector
+  .should('match', 'td')
+  // to match text content against a regular expression
+  // first need to invoke jQuery method text()
+  // and then match using regular expression
+  .invoke('text')
+  .should('match', /column content/i)
+
+// a better way to check element's text content against a regular expression
+// is to use "cy.contains"
+// https://on.cypress.io/contains
+cy.get('.assertion-table')
+  .find('tbody tr:last')
+  // finds first  element with text content matching regular expression
+  .contains('td', /column content/i)
+  .should('be.visible')
+
+
+
+
+
+ 
