@@ -1,0 +1,161 @@
+Good afternoon !!!!!
+
+Cypress Important methods
+
+Cypress => cy.get('#id').Click()
+cy.get('.classname').select()
+cy.contains('get').type ()
+=> 
+Cy.get('.classname').eq(0).should('have.text' ,'ram')
+//with assertion we do have one statement in the cypree 
+
+My class name is "button_submit" 
+i want to check button label  =>  Submit 
+
+cy.get('.button_submit').should('have.text', 'Submit')
+cy.get('.button_submit').click()
+
+you have id of text box  as "text_id" 
+label of textbox  => username 
+action . type the username 
+
+cy.get('#text_id').should('have.text', 'username')
+cy.get('#text_id').type('ramprasad')
+chaining of methods /commands 
+
+cy.get('#text_id').should('contain', 'username').type('ramprasad')
+have.classname 
+so many methods we do have 
+
+
+We have a studio to record the scripts 
+inspect element in the developer option to identify class name /ID 
+
+eq(0)
+eq(1)
+eq(3)
+..
+..
+eq(n+1)
+
+in a dropdown we have 5 options 
+1. apple
+2. grapes
+3. papaya
+4. dragon
+5. kiwi 
+
+Dropdown class name is => fruits_dropdown 
+
+i want to test is this dropdown cotnains appleor not 
+cy.get('.frutis_dropdown').contains('apple').should('have.text', 'apple') 
+
+cy.get('.traversal-list>li')
+  .eq(1).should('contain', 'siamese')
+
+
+table class name = table.traversal-table
+
+
+cy.get('.table.traversal-table').first().should('contain' , '1')
+
+cy.get('.table.traversal-table').last().should('contain' , '10')
+
+
+cy.visit('https://example.cypress.io/commands/traversal')
+cy.get('.traversal-buttons').last().should('contain','Submit')
+
+
+Parent child relation ship in detecting the objects 
+
+Playgound 
+
+
+.classname > :nth-child(1)
+.classname > :nth-child(2)
+.classname > :nth-child(10) 
+.classname > :nth-child(5)
+.classname > :nth-child(100)
+
+classname  > :nth-child(1)
+
+
+class="dropdown-menu"
+.dropdown-menu >:nth-child(1) => quering 
+.dropdown-menu >:nth-child(2) => traversal 
+
+
+it.only()
+=> 
+
+
+beforeEach(() => {
+    // Cypress starts out with a blank slate for each test
+    // so we must tell it to visit our website with the `cy.visit()` command.
+    // Since we want to visit the same URL at the start of all our tests,
+    // we include it in our beforeEach function so that it runs before each test
+    cy.visit('https://example.cypress.io/')
+  })
+
+
+  it.only('open dropdown and select one option', () => {
+        //we need to open the URL 
+        //cy.visit('http://example.cypress.io')
+        //We need to click on commands dropdown
+        cy.get('.dropdown-toggle').should('have.text', 'Commands ')
+        cy.contains('Utilities').should('have.text','Utilities')
+        cy.contains('Cypress API').should('have.text','Cypress API')
+    
+       })
+
+    /* ==== Test Created with Cypress Studio ==== */
+    it('type command practice', function() {
+        /* ==== Generated with Cypress Studio ==== */
+        //cy.visit('https://example.cypress.io');
+        cy.get('.dropdown-toggle').click();
+        cy.get('.dropdown-menu > :nth-child(3) > a').click();
+        cy.get('#email1').clear('r');
+        cy.get('#email1').type('ramprasad');
+        /* ==== End Cypress Studio ==== */
+    });
+
+
+    it.only('nth child practice', () => {
+
+        //Open the example.cypress.io application
+
+//cy.visit('https://example.cypress.io/')
+
+//Click on commands dropdown
+
+cy.get('.dropdown-toggle').click()
+//get the first item from the dropdown list 
+
+cy.get('.dropdown-menu >:nth-child(1)').should('have.text', 'Querying')
+//get the second item from the dropdown list'
+
+cy.get('.dropdown-menu >:nth-child(2)')
+//get the third dropdown item  from the dropdown list
+cy.get('.dropdown-menu >:nth-child(3)')
+//get the 4th dropdown item  from the dropdown list
+cy.get('.dropdown-menu >:nth-child(4)')
+
+
+    })
+
+a. it.only ()
+
+only these it blocks need to be executed 
+
+b. beforeEach(() => {
+//pre requisites to all the tests like browse the URL 
+
+} )
+
+c. .classnams > : nth-child(1)
+
+
+
+
+
+
